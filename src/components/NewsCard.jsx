@@ -2,9 +2,11 @@ import React from "react";
 import { FaEye } from "react-icons/fa";
 import { format } from "date-fns";
 import { FiBookmark, FiShare2 } from "react-icons/fi";
+import { Link } from "react-router";
 
 const NewsCard = ({ news }) => {
   const {
+    id,
     title,
     thumbnail_url,
     details,
@@ -66,9 +68,12 @@ const NewsCard = ({ news }) => {
       {/* Details */}
       <div className="px-4 pt-2 pb-1 text-sm text-gray-700">
         {details.length > 200 ? details.slice(0, 200) + "..." : details}
-        <span className="text-orange-600 font-semibold ml-1 cursor-pointer">
+        <Link
+          to={`/newsDetails/${id}`}
+          className="text-orange-600 font-semibold ml-1 cursor-pointer"
+        >
           Read More
-        </span>
+        </Link>
       </div>
 
       {/* Footer: Rating & Views */}
